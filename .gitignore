@@ -1,0 +1,26 @@
+# Virtual Environment & Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Model Weights (Large Binaries)
+models/*.pth
+*.pth
+
+# Outputs & Temporary Test Files
+outputs/
+test_outputs/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.raf
+*.cr2
+*.nef
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
