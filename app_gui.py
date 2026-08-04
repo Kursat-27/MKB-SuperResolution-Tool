@@ -66,11 +66,11 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
 # Global Color Palette Constants
-_C_BG: str = "#0a0a0f"
-_C_SIDEBAR: str = "#12121d"
-_C_CARD: str = "#1e1e2a"
-_C_CARD_HOVER: str = "#222233"
-_C_LOG_PANEL: str = "#161624"
+_C_BG: str = "#07070c"
+_C_SIDEBAR: str = "#141422"
+_C_CARD: str = "#1e1e32"
+_C_CARD_HOVER: str = "#28283e"
+_C_LOG_PANEL: str = "#101020"
 _C_ACCENT: str = "#a855f7"
 _C_ACCENT_HOVER: str = "#9333ea"
 _C_SUCCESS: str = "#10b981"
@@ -82,7 +82,7 @@ _C_ERROR_HOVER: str = "#dc2626"
 _C_INFO: str = "#3b82f6"
 _C_TEXT: str = "#f1f5f9"
 _C_DIM: str = "#94a3b8"
-_C_BORDER: str = "#26263a"
+_C_BORDER: str = "#3b3b58"
 
 
 class WorkerThread(threading.Thread):
@@ -295,7 +295,10 @@ class App(ctk.CTk, TkinterDnD.DnDWrapper):
     # ── Sidebar Section Card Builder Helper ──
 
     def _make_section_card(self, parent: ctk.CTkFrame, title: str) -> ctk.CTkFrame:
-        outer = ctk.CTkFrame(parent, fg_color=self._C_CARD, corner_radius=12)
+        outer = ctk.CTkFrame(
+            parent, fg_color=self._C_CARD, corner_radius=12,
+            border_width=1, border_color=self._C_BORDER,
+        )
         outer.pack(fill="x", pady=6)
 
         ctk.CTkLabel(
@@ -549,7 +552,10 @@ class App(ctk.CTk, TkinterDnD.DnDWrapper):
         self._comp_out_lbl.pack(expand=True, fill="both")
 
     def _build_log_console_and_progress(self, parent: ctk.CTkFrame) -> None:
-        outer = ctk.CTkFrame(parent, fg_color=self._C_LOG_PANEL, corner_radius=14, border_width=1, border_color="#33334d")
+        outer = ctk.CTkFrame(
+            parent, fg_color=self._C_LOG_PANEL, corner_radius=14,
+            border_width=1, border_color=self._C_BORDER,
+        )
         outer.pack(fill="both", expand=True, side="bottom")
 
         top_row = ctk.CTkFrame(outer, fg_color="transparent")
@@ -609,12 +615,13 @@ class App(ctk.CTk, TkinterDnD.DnDWrapper):
 
     def _toggle_log_expand(self) -> None:
         if self._log_expanded:
-            self._log_box.configure(height=8)
+            self._log_box.configure(height=80)
             self._log_toggle_btn.configure(text="▲ Genişlet")
         else:
-            self._log_box.configure(height=22)
+            self._log_box.configure(height=220)
             self._log_toggle_btn.configure(text="▼ Daralt")
         self._log_expanded = not self._log_expanded
+        self.update_idletasks()
 
     # ────────────────────────────────────────────────────────────
     # Callbacks & Event Handlers
