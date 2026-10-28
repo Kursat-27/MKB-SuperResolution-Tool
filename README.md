@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✦ MKB AI Super Resolution Tool
+#  MKB AI Super Resolution Tool
 
 ### v7.2 — Camera RAW · CUDA · Fujifilm Color Science · CustomTkinter GUI
 
